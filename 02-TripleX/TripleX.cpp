@@ -1,7 +1,13 @@
 #define FMT_HEADER_ONLY
 
 #include <iostream>
+#include <time.h>
 #include "fmt/format.h"
+
+void Init()
+{
+    srand(time(NULL));
+}
 
 void PrintIntro()
 {
@@ -9,9 +15,15 @@ void PrintIntro()
     std::cout << "Enter the correct code in the form of `X X X` (where X is a number) to continue..." << std::endl;
 }
 
-bool PlayLevel()
+int RandomInt(int Difficulty)
 {
-    const int CodeA = 2, CodeB = 3, CodeC = 4;
+    const int Max = 3 * Difficulty;
+    return rand() % Max + 1;
+}
+
+bool PlayLevel(int Difficulty)
+{
+    const int CodeA = RandomInt(Difficulty), CodeB = RandomInt(Difficulty), CodeC = RandomInt(Difficulty);
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
     std::cout << "+ There are 3 numbers in the code" << std::endl;
@@ -34,12 +46,18 @@ bool PlayLevel()
 
 int main()
 {
+    Init();
     PrintIntro();
 
+    auto LevelDifficulty = 1;
     while (true)
     {
-        const bool bCompleted = PlayLevel();
+        const auto bCompleted = PlayLevel(LevelDifficulty);
         std::cout << fmt::format("You guessed {}", bCompleted ? "right" : "wrong") << std::endl;
+        if (bCompleted)
+        {
+            LevelDifficulty++;
+        }
         std::cout << std::endl;
     }
 
