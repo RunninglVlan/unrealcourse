@@ -12,7 +12,7 @@ void Init()
 void PrintIntro()
 {
     std::cout << "You are a secret agent breaking into a secure server room..." << std::endl;
-    std::cout << "Enter the correct code in the form of `X X X` (where X is a number) to continue..." << std::endl;
+    std::cout << "Enter the correct code in the form of `X X X` to continue..." << std::endl;
 }
 
 int RandomInt(int Difficulty)
@@ -27,8 +27,8 @@ bool PlayLevel(int Difficulty)
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
     std::cout << "+ There are 3 numbers in the code" << std::endl;
-    std::cout << fmt::format("+ The codes add-up to: {}", CodeSum) << std::endl;
-    std::cout << fmt::format("+ The codes multiply to give: {}", CodeProduct) << std::endl;
+    std::cout << fmt::format("+ The numbers add-up to: {}", CodeSum) << std::endl;
+    std::cout << fmt::format("+ The numbers multiply to give: {}", CodeProduct) << std::endl;
 
     int GuessA, GuessB, GuessC;
     std::cout << "Your guess: ";
@@ -61,7 +61,8 @@ int main()
             if (LevelDifficulty <= MaxDifficulty)
             {
                 std::cout << std::endl
-                          << "*** Great, but the door doesn't open yet, instead you're asked to enter a new code ***" << std::endl;
+                          << "*** Great, but the door doesn't open yet,             ***" << std::endl;
+                std::cout << "*** instead you're asked to enter a new code          ***" << std::endl;
                 std::cout << fmt::format("*** It says on the display that you're on level {} now ***", LevelDifficulty) << std::endl;
             }
         }
@@ -72,7 +73,8 @@ int main()
         }
         std::cout << std::endl;
     }
-    std::cout << "*** Hooray, the door finally opens. Time to get that secret data and get out of here... ***";
+    std::cout << "*** Hooray, the door finally opens                      ***" << std::endl;
+    std::cout << "*** Time to get that secret data and get out of here... ***";
 
     return 0;
 }
