@@ -50,16 +50,27 @@ int main()
     PrintIntro();
 
     auto LevelDifficulty = 1;
-    while (true)
+    const auto MaxDifficulty = 3;
+    while (LevelDifficulty <= MaxDifficulty)
     {
         const auto bCompleted = PlayLevel(LevelDifficulty);
-        std::cout << fmt::format("You guessed {}", bCompleted ? "right" : "wrong") << std::endl;
+        std::cout << fmt::format("You guessed {}. ", bCompleted ? "right" : "wrong");
         if (bCompleted)
         {
             LevelDifficulty++;
+            if (LevelDifficulty < MaxDifficulty)
+            {
+                std::cout << "Great, but the door doesn't open yet, instead you need to enter a new code" << std::endl;
+                std::cout << fmt::format("It says on the display that you're on level {} now", LevelDifficulty) << std::endl;
+            }
+        }
+        else
+        {
+            std::cout << "Careful, agent! Try again!" << std::endl;
         }
         std::cout << std::endl;
     }
+    std::cout << "Hooray, the door finally opens. Time to get that secret data and get out of here...";
 
     return 0;
 }
