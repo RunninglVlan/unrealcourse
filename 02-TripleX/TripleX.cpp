@@ -9,10 +9,8 @@ void PrintIntro()
     std::cout << "Enter the correct code in the form of `X X X` (where X is a number) to continue..." << std::endl;
 }
 
-int main()
+bool PlayLevel()
 {
-    PrintIntro();
-
     const int CodeA = 2, CodeB = 3, CodeC = 4;
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
@@ -22,11 +20,28 @@ int main()
 
     int GuessA, GuessB, GuessC;
     std::cout << "Your guess: ";
-    std::cin >> GuessA >> GuessB >> GuessC;
+    if (!(std::cin >> GuessA >> GuessB >> GuessC))
+    {
+        // clear error flags and buffer
+        std::cin.clear();
+        std::cin.ignore();
+    }
     const int GuessSum = GuessA + GuessB + GuessC;
     const int GuessProduct = GuessA * GuessB * GuessC;
-    const bool bCorrect = GuessSum == CodeSum && GuessProduct == CodeProduct;
-    std::cout << fmt::format("You guessed {}", bCorrect ? "right" : "wrong");
+
+    return GuessSum == CodeSum && GuessProduct == CodeProduct;
+}
+
+int main()
+{
+    PrintIntro();
+
+    while (true)
+    {
+        const bool bCompleted = PlayLevel();
+        std::cout << fmt::format("You guessed {}", bCompleted ? "right" : "wrong") << std::endl;
+        std::cout << std::endl;
+    }
 
     return 0;
 }
