@@ -1,7 +1,7 @@
 #define FMT_HEADER_ONLY
 
 #include <iostream>
-#include <time.h>
+#include <ctime>
 #include "fmt/format.h"
 
 void Init()
@@ -54,23 +54,25 @@ int main()
     while (LevelDifficulty <= MaxDifficulty)
     {
         const auto bCompleted = PlayLevel(LevelDifficulty);
-        std::cout << fmt::format("You guessed {}. ", bCompleted ? "right" : "wrong");
+        std::cout << fmt::format("You guessed {}", bCompleted ? "right" : "wrong") << std::endl;
         if (bCompleted)
         {
             LevelDifficulty++;
-            if (LevelDifficulty < MaxDifficulty)
+            if (LevelDifficulty <= MaxDifficulty)
             {
-                std::cout << "Great, but the door doesn't open yet, instead you need to enter a new code" << std::endl;
-                std::cout << fmt::format("It says on the display that you're on level {} now", LevelDifficulty) << std::endl;
+                std::cout << std::endl
+                          << "*** Great, but the door doesn't open yet, instead you're asked to enter a new code ***" << std::endl;
+                std::cout << fmt::format("*** It says on the display that you're on level {} now ***", LevelDifficulty) << std::endl;
             }
         }
         else
         {
-            std::cout << "Careful, agent! Try again!" << std::endl;
+            std::cout << std::endl
+                      << "*** Careful, agent! Try again! ***" << std::endl;
         }
         std::cout << std::endl;
     }
-    std::cout << "Hooray, the door finally opens. Time to get that secret data and get out of here...";
+    std::cout << "*** Hooray, the door finally opens. Time to get that secret data and get out of here... ***";
 
     return 0;
 }
