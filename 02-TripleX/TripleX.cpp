@@ -15,5 +15,11 @@ int main()
     std::cout << fmt::format("+ The codes add-up to: {}", CodeSum) << std::endl;
     std::cout << fmt::format("+ The codes multiply to give: {}", CodeProduct) << std::endl;
 
+    int GuessA, GuessB, GuessC;
+    std::cout << "Your guess: ";
+    std::cin >> GuessA >> GuessB >> GuessC;
+    const int GuessSum = GuessA + GuessB + GuessC;
+    const int GuessProduct = GuessA * GuessB * GuessC;
+
     return 0;
 }
