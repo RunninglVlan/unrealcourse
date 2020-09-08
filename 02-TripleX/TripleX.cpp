@@ -20,6 +20,8 @@ int main()
     std::cin >> GuessA >> GuessB >> GuessC;
     const int GuessSum = GuessA + GuessB + GuessC;
     const int GuessProduct = GuessA * GuessB * GuessC;
+    const bool bCorrect = GuessSum == CodeSum && GuessProduct == CodeProduct;
+    std::cout << fmt::format("You guessed {}", bCorrect ? "right" : "wrong");
 
     return 0;
 }
