@@ -10,3 +10,5 @@ For [Unreal Engine C++ Developer course](https://www.udemy.com/course/unrealcour
 
 ## Useful resources
 - [Unreal Engine Coding Standard](https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard)
+- [Unreal Online Learning](https://www.unrealengine.com/en-US/onlinelearning-courses)
+- [Getting Started with Unreal](https://docs.unrealengine.com/en-US/GettingStarted)
