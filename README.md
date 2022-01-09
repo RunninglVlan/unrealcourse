@@ -4,7 +4,7 @@ For [Unreal Engine C++ Developer course](https://www.udemy.com/course/unrealcour
 ## Run in Repl.it
 <table>
   <tr>
-    <td><a href="https://repl.it/@RunninglVlan/TripleX"><img src="/docs/02-TripleX/thumbnail.png" /></a><br>2. Triple X</td>
+    <td><a href="https://repl.it/@RunninglVlan/TripleX"><img src="/docs/P02-TripleX/thumbnail.png" /></a><br>2. Triple X</td>
   </tr>
 </table>
 
