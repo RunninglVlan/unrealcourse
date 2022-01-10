@@ -15,4 +15,5 @@ public:
 
 private:
     FString HiddenWord;
+    void NewWord();
 };
