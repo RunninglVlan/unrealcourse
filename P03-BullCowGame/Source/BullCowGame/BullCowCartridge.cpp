@@ -18,9 +18,8 @@ void UBullCowCartridge::NewWord()
 void UBullCowCartridge::OnInput(const FString& Input)
 {
     ClearScreen();
-    if (Input.Len() != HiddenWord.Len())
+    if (!Validate(Input))
     {
-        PrintLine(FString::Printf(TEXT("The word has %d letters, not %d. Try again."), HiddenWord.Len(), Input.Len()));
         return;
     }
 
@@ -36,14 +35,38 @@ void UBullCowCartridge::OnInput(const FString& Input)
         CountBullsAndCows(Input);
         if (--Lives > 0)
         {
-            PrintLine(FString::Printf(TEXT("You got %d lives. Try again."), Lives));
+            PrintLine(FString::Printf(TEXT("You got %d more lives. Try again."), Lives));
         }
         else
         {
-            PrintLine(TEXT("You're out of lives. Try with a new word."));
+            PrintLine(TEXT("You're out of lives."));
+            PrintLine(FString::Printf(TEXT("The word was %s."), *HiddenWord));
+            PrintLine(TEXT("Try one more time with a new word."));
             NewWord();
         }
     }
+}
+
+bool UBullCowCartridge::Validate(const FString& Input) const
+{
+    if (Input.Len() != HiddenWord.Len())
+    {
+        PrintLine(FString::Printf(TEXT("The word has %d letters, not %d. Try again."), HiddenWord.Len(), Input.Len()));
+        return false;
+    }
+    TSet<TCHAR> Unique;
+    for (TCHAR Letter : Input)
+    {
+        bool IsAlreadyInSet;
+        Unique.Add(Letter, &IsAlreadyInSet);
+        if (IsAlreadyInSet)
+        {
+            PrintLine(TEXT("Your word isn't an isogram"));
+            PrintLine(FString::Printf(TEXT("%c is repeated. Try again."), Letter));
+            return false;
+        }
+    }
+    return true;
 }
 
 void UBullCowCartridge::CountBullsAndCows(const FString& Input)

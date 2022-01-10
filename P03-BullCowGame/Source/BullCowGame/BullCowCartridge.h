@@ -17,5 +17,6 @@ private:
     FString HiddenWord;
     int Lives;
     void NewWord();
+    bool Validate(const FString& Input) const;
     void CountBullsAndCows(const FString& Input);
 };
