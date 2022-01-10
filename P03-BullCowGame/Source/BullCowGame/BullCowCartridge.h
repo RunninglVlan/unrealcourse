@@ -14,4 +14,5 @@ public:
     virtual void OnInput(const FString& Input) override;
 
 private:
+    FString HiddenWord;
 };

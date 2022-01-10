@@ -4,12 +4,26 @@ void UBullCowCartridge::BeginPlay()
 {
     Super::BeginPlay();
     PrintLine(TEXT("Welcome to Bulls & Cows!"));
-    PrintLine(TEXT("Press Enter to continue..."));
+    HiddenWord = TEXT("duck");
+    PrintLine(FString::Printf(TEXT("Guess the %d letter word and press Enter..."), HiddenWord.Len()));
 }
 
 void UBullCowCartridge::OnInput(const FString& Input)
 {
     ClearScreen();
-    FString HiddenWord = TEXT("duck");
-    PrintLine(Input);
+    if (Input.Len() != HiddenWord.Len())
+    {
+        PrintLine(FString::Printf(TEXT("The word has %d letters, not %d. Try again."), HiddenWord.Len(), Input.Len()));
+        return;
+    }
+
+    if (Input.Compare(HiddenWord, ESearchCase::Type::IgnoreCase) == 0)
+    {
+        PrintLine(TEXT("Yes, you guessed right!"));
+        PrintLine(TEXT("The word is " + HiddenWord));
+    }
+    else
+    {
+        PrintLine(TEXT("Unfortunately you're wrong. Try again."));
+    }
 }
