@@ -27,7 +27,7 @@ void UBullCowCartridge::OnInput(const FString& Input)
     if (Input.Equals(HiddenWord, ESearchCase::Type::IgnoreCase))
     {
         PrintLine(TEXT("Yes, you guessed right!"));
-        PrintLine(TEXT("The word was " + HiddenWord + ". To the next one!"));
+        PrintLine(FString::Printf(TEXT("The word was %s. To the next one!"), *HiddenWord));
         NewWord();
     }
     else
