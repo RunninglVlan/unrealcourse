@@ -4,11 +4,12 @@
 void UBullCowCartridge::BeginPlay()
 {
 	Super::BeginPlay();
-	PrintLine("Welcome to Bulls & Cows!");
-	PrintLine("Press Enter to continue...");
+	PrintLine(TEXT("Welcome to Bulls & Cows!"));
+	PrintLine(TEXT("Press Enter to continue..."));
 }
 
 void UBullCowCartridge::OnInput(const FString& Input)
 {
 	ClearScreen();
+	FString HiddenWord = TEXT("duck");
 }
