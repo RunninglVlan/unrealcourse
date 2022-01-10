@@ -12,4 +12,5 @@ void UBullCowCartridge::OnInput(const FString& Input)
 {
 	ClearScreen();
 	FString HiddenWord = TEXT("duck");
+	PrintLine(Input);
 }
