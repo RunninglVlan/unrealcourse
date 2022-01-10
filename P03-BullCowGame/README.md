@@ -4,6 +4,64 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
 
 ## What's new
 - [Couldn't run provided project with a folder that started with a number](https://community.gamedev.tv/t/bullcow-game-cannot-be-compiled-try-rebuilding-from-source/174219/3)
-- Logs are located in `./Saved/Logs`
+- When there are problems with project opening, try deleting Intermediate/* and Binaries/*. Logs are located in `./Saved/Logs`
+- When there are errors in Viewport, try Building the project
 - There is a setting in Editor Preferences: _Level Editor - Play > Game Gets Mouse Control_
 - Unreal Actors are similar to Unity GameObjects, but you can extend Actors. Unreal has special Actors like Pawn (for players or AI objects) and Character (for animated creatures) too.
+- Unreal equivalents compared to Unity:
+  - Viewport <- Scene View
+  - Details Panel <- Inspector
+  - Content Browser <- Project Browser
+  - World Outliner <- Hierarchy Panel
+  - Place Actors <- GameObject > ...
+  - Output Log <- Console
+  - Blueprint Class (UASSET) <- Prefab (PREFAB)
+  - Static Mesh <- Mesh
+  - Material/Material Editor <- Shader
+  - Material Instance <- Material
+  - UMG (Unreal Motion Graphics) <- UI
+  - Blueprint <- Script
+  - Line Trace/Shape Trace <- Raycast
+  - Collision/Physics <- Rigid Body
+  - Map file (UMAP) <- Scene asset (UNITY)
+  - Platforms Settings <- Player Settings
+  - Content <- Assets
+  - Transform Location <- Transform Position
+  - AActor.BeginPlay <- MonoBehaviour.Start
+  - AActor.Tick <- MonoBehaviour.Update
+  - AActor.EndPlay <- MonoBehaviour.OnDestroy
+- Blueprint-only projects won't have Source folder where C++ code is placed
+- Unlike flat list of Components in the GameObject, Unreal Actor contains Hierarchy of Components
+- Blueprint Classes are extendable, and can even extend C++ classes
+- Scene Components are in the root of Actors and give them location, rotation and scale
+- Naming Conventions:
+  - Classes that inherit from AActor are prefixed by A
+  - Classes that inherit from UObject are prefixed by U
+- Some Unreal classes:
+  - `FString/FText` <- `String`
+  - `TArray` <- `List`
+  - `TMap` <- `Dictionary`
+  - `TSet` <- `HashSet`
+- UObjects are similar to ScriptableObjects:
+  - `UMyObject* NewObj = NewObject<UMyObject>()` <- `MyScriptableObject NewSO = ScriptableObject.CreateInstance<MyScriptableObject>()`
+- AActor are spawned using SpawnActor on UWorld:
+  - `UWorld* World = ExistingActor->GetWorld() // all actors have GetWorld`
+  - `FActorSpawnParameters SpawnParams`
+  - `SpawnParams.Template = ExistingActor`
+  - `World->SpawnActor<AMyActor>(ExistingActor->GetClass(), SpawnLocation, SpawnRotation, SpawnParams)` <- `Instantiate(EnemyPrefab, SpawnPosition, SpawnRotation)`
+  - Normally SpawnActor is called without SpawnParameters and its Template
+- Getting Actor:
+  - `MyComponent->GetOwner()` <- `MyComponent.gameObject`
+- Getting Component and casting it to more specific class:
+  - `UPrimitiveComponent* Primitive = MyActor->GetComponentByClass(UPrimitiveComponent::StaticClass())`
+  - `USphereComponent* SphereCollider = Cast<USphereComponent>(Primitive)`
+- Null Checking:
+  - `UWorld* World = GetWorld()`
+  - `if (World != nullptr)`
+- Hiding:
+  - `MyActor->SetActorHiddenInGame(true)` <- `MyGameObject.SetActive(false)`
+- Destroying:
+  - `MyActor->Destroy()`
+  - `MyActor->SetLifeSpan(1)` <- `Destroy(MyGameObject, 1)`
+- In Unreal primary unit is centimeter compared to Unity meter
+- Unreal doesn't use Exception handling, you use `check()` to trigger critical assertion error or `ensure()` to report error but not halt the program
