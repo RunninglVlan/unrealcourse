@@ -75,3 +75,7 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
 - `const` member functions are similar to `static` functions
   - They don't modify `this` fields, but unlike static - they can access them, they also can be used in polymorphism
 - For regular array length use `UE_ARRAY_COUNT` macro
+- For `TArray` use its `Num` method
+- Use `FFileHelper::LoadFileToStringArray` to read file system and load each file line to the `TArray`
+- This `FPaths::ProjectContentDir() / TEXT("Files/File.txt")` returns correct path to the file (Editor/Build)
+  - To make the folder available in Build for IO operations, it needs to be added to _Project Settings > Packaging > Additional Non-Asset Directories to Package_

@@ -14,12 +14,7 @@ public:
     virtual void OnInput(const FString& Input) override;
 
 private:
-    const FString HiddenWords[8] = {
-        TEXT("car"), TEXT("row"),
-        TEXT("duck"), TEXT("game"),
-        TEXT("chair"), TEXT("table"),
-        TEXT("flower"), TEXT("change")
-    };
+    TArray<FString> Words;
     FString HiddenWord;
     int32 Lives;
     bool bGameOver;
