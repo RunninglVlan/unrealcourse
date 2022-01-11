@@ -72,3 +72,5 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
 - FString length: `TEXT("Hello").Len()`
 - private methods should be included in header files too
 - bool fields need to start with b: `bool bGameOver`
+- `const` member functions are similar to `static` functions
+  - They don't modify `this` fields, but unlike static - they can access them, they also can be used in polymorphism

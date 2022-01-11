@@ -38,15 +38,16 @@ bool UBullCowCartridge::Validate(const FString& Guess) const
         PrintLine(TEXT("The word has %d letters, not %d. Try again."), HiddenWord.Len(), Guess.Len());
         return false;
     }
+
     TSet<TCHAR> Unique;
-    for (TCHAR Letter : Guess)
+    for (TCHAR Symbol : Guess)
     {
         bool IsAlreadyInSet;
-        Unique.Add(Letter, &IsAlreadyInSet);
+        Unique.Add(Symbol, &IsAlreadyInSet);
         if (IsAlreadyInSet)
         {
             PrintLine(TEXT("Your word isn't an isogram"));
-            PrintLine(TEXT("%c is repeated. Try again."), Letter);
+            PrintLine(TEXT("%c is repeated. Try again."), Symbol);
             return false;
         }
     }
@@ -77,7 +78,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Word)
     }
 }
 
-void UBullCowCartridge::CountBullsAndCows(const FString& Word)
+void UBullCowCartridge::CountBullsAndCows(const FString& Word) const
 {
     int32 Bulls = 0, Cows = 0;
     for (int32 Index = 0; Index < Word.Len(); Index++)

@@ -20,6 +20,6 @@ private:
     void NewWord();
     bool Validate(const FString& Guess) const;
     void ProcessGuess(const FString& Word);
-    void CountBullsAndCows(const FString& Word);
+    void CountBullsAndCows(const FString& Word) const;
     void AskForANewWord();
 };
