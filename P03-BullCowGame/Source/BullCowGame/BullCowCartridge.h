@@ -18,7 +18,8 @@ private:
     int32 Lives;
     bool bGameOver;
     void NewWord();
-    bool Validate(const FString& Input) const;
-    void CountBullsAndCows(const FString& Input);
+    bool Validate(const FString& Guess) const;
+    void ProcessGuess(const FString& Word);
+    void CountBullsAndCows(const FString& Word);
     void AskForANewWord();
 };

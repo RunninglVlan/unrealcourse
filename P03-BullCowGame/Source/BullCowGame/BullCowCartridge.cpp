@@ -25,43 +25,21 @@ void UBullCowCartridge::OnInput(const FString& Input)
         return;
     }
 
-    if (!Validate(Input))
+    if (Validate(Input))
     {
-        return;
-    }
-
-    if (Input.Equals(HiddenWord, ESearchCase::Type::IgnoreCase))
-    {
-        PrintLine(TEXT("Congratulations, you are right!"));
-        AskForANewWord();
-    }
-    else
-    {
-        PrintLine(TEXT("Unfortunately you're wrong"));
-        if (--Lives > 0)
-        {
-            CountBullsAndCows(Input);
-            PrintLine(TEXT("You got %d more lives. Try again."), Lives);
-        }
-        else
-        {
-            PrintLine(TEXT("And out of lives."));
-            PrintLine(TEXT("The word was %s."), *HiddenWord);
-            PrintLine(TEXT("Better luck next time"));
-            AskForANewWord();
-        }
+        ProcessGuess(Input);
     }
 }
 
-bool UBullCowCartridge::Validate(const FString& Input) const
+bool UBullCowCartridge::Validate(const FString& Guess) const
 {
-    if (Input.Len() != HiddenWord.Len())
+    if (Guess.Len() != HiddenWord.Len())
     {
-        PrintLine(TEXT("The word has %d letters, not %d. Try again."), HiddenWord.Len(), Input.Len());
+        PrintLine(TEXT("The word has %d letters, not %d. Try again."), HiddenWord.Len(), Guess.Len());
         return false;
     }
     TSet<TCHAR> Unique;
-    for (TCHAR Letter : Input)
+    for (TCHAR Letter : Guess)
     {
         bool IsAlreadyInSet;
         Unique.Add(Letter, &IsAlreadyInSet);
@@ -75,12 +53,36 @@ bool UBullCowCartridge::Validate(const FString& Input) const
     return true;
 }
 
-void UBullCowCartridge::CountBullsAndCows(const FString& Input)
+void UBullCowCartridge::ProcessGuess(const FString& Word)
+{
+    if (Word.Equals(HiddenWord, ESearchCase::Type::IgnoreCase))
+    {
+        PrintLine(TEXT("Congratulations, you are right!"));
+        AskForANewWord();
+        return;
+    }
+
+    PrintLine(TEXT("Unfortunately you're wrong"));
+    if (--Lives > 0)
+    {
+        CountBullsAndCows(Word);
+        PrintLine(TEXT("You got %d more lives. Try again."), Lives);
+    }
+    else
+    {
+        PrintLine(TEXT("And out of lives."));
+        PrintLine(TEXT("The word was %s."), *HiddenWord);
+        PrintLine(TEXT("Better luck next time"));
+        AskForANewWord();
+    }
+}
+
+void UBullCowCartridge::CountBullsAndCows(const FString& Word)
 {
     int32 Bulls = 0, Cows = 0;
-    for (int32 Index = 0; Index < Input.Len(); Index++)
+    for (int32 Index = 0; Index < Word.Len(); Index++)
     {
-        const TCHAR Letter = Input[Index];
+        const TCHAR Letter = Word[Index];
         if (Letter == HiddenWord[Index])
         {
             Bulls += 1;
