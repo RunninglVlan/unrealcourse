@@ -10,7 +10,7 @@ void UBullCowCartridge::BeginPlay()
 
 void UBullCowCartridge::NewWord()
 {
-    HiddenWord = TEXT("duck");
+    HiddenWord = HiddenWords[FMath::RandRange(0, UE_ARRAY_COUNT(HiddenWords) - 1)];
     Lives = HiddenWord.Len();
     PrintLine(TEXT("Guess the %d letter word, you have %d lives"), Lives, Lives);
     bGameOver = false;

@@ -74,3 +74,4 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
 - bool fields need to start with b: `bool bGameOver`
 - `const` member functions are similar to `static` functions
   - They don't modify `this` fields, but unlike static - they can access them, they also can be used in polymorphism
+- For regular array length use `UE_ARRAY_COUNT` macro
