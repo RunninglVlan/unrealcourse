@@ -71,3 +71,4 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
   - `FString::Printf(TEXT("Oh Hi %d"), TEXT("Mark"))` <- `$"Oh Hi {"Mark"}""`
 - FString length: `TEXT("Hello").Len()`
 - private methods should be included in header files too
+- bool fields need to start with b: `bool bGameOver`

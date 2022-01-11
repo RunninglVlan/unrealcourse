@@ -13,11 +13,18 @@ void UBullCowCartridge::NewWord()
     HiddenWord = TEXT("duck");
     Lives = HiddenWord.Len();
     PrintLine(TEXT("Guess the %d letter word, you have %d lives"), Lives, Lives);
+    bGameOver = false;
 }
 
 void UBullCowCartridge::OnInput(const FString& Input)
 {
-    ClearScreen();
+    if (bGameOver)
+    {
+        ClearScreen();
+        NewWord();
+        return;
+    }
+
     if (!Validate(Input))
     {
         return;
@@ -25,24 +32,23 @@ void UBullCowCartridge::OnInput(const FString& Input)
 
     if (Input.Equals(HiddenWord, ESearchCase::Type::IgnoreCase))
     {
-        PrintLine(TEXT("Yes, you guessed right!"));
-        PrintLine(TEXT("The word was %s. To the next one!"), *HiddenWord);
-        NewWord();
+        PrintLine(TEXT("Congratulations, you are right!"));
+        AskForANewWord();
     }
     else
     {
         PrintLine(TEXT("Unfortunately you're wrong"));
-        CountBullsAndCows(Input);
         if (--Lives > 0)
         {
+            CountBullsAndCows(Input);
             PrintLine(TEXT("You got %d more lives. Try again."), Lives);
         }
         else
         {
-            PrintLine(TEXT("You're out of lives."));
+            PrintLine(TEXT("And out of lives."));
             PrintLine(TEXT("The word was %s."), *HiddenWord);
-            PrintLine(TEXT("Try one more time with a new word."));
-            NewWord();
+            PrintLine(TEXT("Better luck next time"));
+            AskForANewWord();
         }
     }
 }
@@ -86,4 +92,11 @@ void UBullCowCartridge::CountBullsAndCows(const FString& Input)
         }
     }
     PrintLine(TEXT("Your guess has %d Bulls and %d Cows"), Bulls, Cows);
+}
+
+void UBullCowCartridge::AskForANewWord()
+{
+    PrintLine(TEXT("Do you want to try a new word?"));
+    PrintLine(TEXT("Press Enter to continue..."));
+    bGameOver = true;
 }
