@@ -3,17 +3,17 @@
 void UBullCowCartridge::BeginPlay()
 {
     Super::BeginPlay();
-    Words = LoadWords();
+    Isograms = LoadIsograms();
     PrintLine(TEXT("Welcome to Bulls & Cows!"));
     NewWord();
     PrintLine(TEXT("Input your word and press Enter..."));
 }
 
-TArray<FString> UBullCowCartridge::LoadWords() const
+TArray<FString> UBullCowCartridge::LoadIsograms() const
 {
-    const FString WordListPath = FPaths::ProjectContentDir() / TEXT("Words.txt");
+    const FString WordsPath = FPaths::ProjectContentDir() / TEXT("Words.txt");
     TArray<FString> Words;
-    FFileHelper::LoadFileToStringArray(Words, *WordListPath);
+    FFileHelper::LoadFileToStringArray(Words, *WordsPath);
     TArray<FString> ValidWords = Words.FilterByPredicate([](const FString& Word)
     {
         const int32 Length = Word.Len();
@@ -24,7 +24,7 @@ TArray<FString> UBullCowCartridge::LoadWords() const
 
 void UBullCowCartridge::NewWord()
 {
-    HiddenWord = Words[FMath::RandRange(0, Words.Num() - 1)];
+    HiddenWord = Isograms[FMath::RandRange(0, Isograms.Num() - 1)];
     Lives = HiddenWord.Len();
     PrintLine(TEXT("Guess the %d letter word, you have %d lives"), Lives, Lives);
     bGameOver = false;

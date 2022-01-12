@@ -14,11 +14,11 @@ public:
     virtual void OnInput(const FString& Input) override;
 
 private:
-    TArray<FString> Words;
+    TArray<FString> Isograms;
     FString HiddenWord;
     int32 Lives;
     bool bGameOver;
-    TArray<FString> LoadWords() const;
+    TArray<FString> LoadIsograms() const;
     void NewWord();
     bool Validate(const FString& Guess) const;
     static bool IsIsogram(const FString& Word, TCHAR* RepeatedLetter = nullptr);
