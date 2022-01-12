@@ -23,6 +23,6 @@ private:
     bool Validate(const FString& Guess) const;
     static bool IsIsogram(const FString& Word, TCHAR* RepeatedLetter = nullptr);
     void ProcessGuess(const FString& Word);
-    void CountBullsAndCows(const FString& Word) const;
+    void CountBullsAndCows(const FString& Word, int32& Bulls, int32& Cows) const;
     void AskForANewWord();
 };
