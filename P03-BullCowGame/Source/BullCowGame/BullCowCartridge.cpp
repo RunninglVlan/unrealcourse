@@ -114,6 +114,7 @@ void UBullCowCartridge::CountBullsAndCows(const FString& Word) const
         if (Letter == HiddenWord[Index])
         {
             Bulls += 1;
+            continue;
         }
         int32 _;
         if (HiddenWord.FindChar(Letter, _))
