@@ -3,8 +3,9 @@
 void UBullCowCartridge::BeginPlay()
 {
     Super::BeginPlay();
-    const FString WordListPath = FPaths::ProjectContentDir() / TEXT("Words/Isograms.txt");
+    const FString WordListPath = FPaths::ProjectContentDir() / TEXT("Words/Words.txt");
     FFileHelper::LoadFileToStringArray(Words, *WordListPath);
+    Words = Words.FilterByPredicate([](const FString& Word) { return IsIsogram(Word); });
     PrintLine(TEXT("Welcome to Bulls & Cows!"));
     NewWord();
     PrintLine(TEXT("Input your word and press Enter..."));
@@ -41,15 +42,29 @@ bool UBullCowCartridge::Validate(const FString& Guess) const
         return false;
     }
 
+    TCHAR RepeatedLetter;
+    if (!IsIsogram(Guess, &RepeatedLetter))
+    {
+        PrintLine(TEXT("Your word isn't an isogram"));
+        PrintLine(TEXT("%c is repeated. Try again."), RepeatedLetter);
+        return false;
+    }
+    return true;
+}
+
+bool UBullCowCartridge::IsIsogram(const FString& Word, TCHAR* RepeatedLetter)
+{
     TSet<TCHAR> Unique;
-    for (TCHAR Symbol : Guess)
+    for (TCHAR Letter : Word)
     {
         bool IsAlreadyInSet;
-        Unique.Add(Symbol, &IsAlreadyInSet);
+        Unique.Add(Letter, &IsAlreadyInSet);
         if (IsAlreadyInSet)
         {
-            PrintLine(TEXT("Your word isn't an isogram"));
-            PrintLine(TEXT("%c is repeated. Try again."), Symbol);
+            if (RepeatedLetter)
+            {
+                *RepeatedLetter = Letter;
+            }
             return false;
         }
     }
