@@ -5,7 +5,11 @@ void UBullCowCartridge::BeginPlay()
     Super::BeginPlay();
     const FString WordListPath = FPaths::ProjectContentDir() / TEXT("Words/Words.txt");
     FFileHelper::LoadFileToStringArray(Words, *WordListPath);
-    Words = Words.FilterByPredicate([](const FString& Word) { return IsIsogram(Word); });
+    Words = Words.FilterByPredicate([](const FString& Word)
+    {
+        const int32 Length = Word.Len();
+        return Length >= 3 && Length <= 8 && IsIsogram(Word);
+    });
     PrintLine(TEXT("Welcome to Bulls & Cows!"));
     NewWord();
     PrintLine(TEXT("Input your word and press Enter..."));
