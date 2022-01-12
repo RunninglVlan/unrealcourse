@@ -79,3 +79,4 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
 - Use `FFileHelper::LoadFileToStringArray` to read file system and load each file line to the `TArray`
 - This `FPaths::ProjectContentDir() / TEXT("Files/File.txt")` returns correct path to the file (Editor/Build)
   - To make the folder available in Build for IO operations, it needs to be added to _Project Settings > Packaging > Additional Non-Asset Directories to Package_
+- `#pragma once` in header files means this header can't be included multiple times by accident
