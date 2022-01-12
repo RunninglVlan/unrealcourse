@@ -12,9 +12,8 @@ void UBullCowCartridge::BeginPlay()
 TArray<FString> UBullCowCartridge::LoadIsograms() const
 {
     const FString WordsPath = FPaths::ProjectContentDir() / TEXT("Words.txt");
-    TArray<FString> Words;
-    FFileHelper::LoadFileToStringArray(Words, *WordsPath);
-    TArray<FString> ValidWords = Words.FilterByPredicate([](const FString& Word)
+    TArray<FString> ValidWords;
+    FFileHelper::LoadFileToStringArrayWithPredicate(ValidWords, *WordsPath, [](const FString& Word)
     {
         const int32 Length = Word.Len();
         return Length >= 3 && Length <= 8 && IsIsogram(Word);

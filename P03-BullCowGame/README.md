@@ -86,3 +86,7 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
 - This means passing parameter values by reference: `void ProcessGuess(const FString& Word)`
   - It's better because without it you're creating a copy of passed value, requiring more memory
   - Use `const` here, otherwise you can accidentally change passed value outside the method
+- Lambdas look like this: `[](const FString& Word) { return Word.Len() >= 3; }` <- `word => word.Length >= 3`
+  - A lambda is actually just syntactic sugar for creating a class with a compiler generated name with the () operator overloaded
+  - `class CompilerGeneratedName { public: bool operator()(const FString& Word) const { return Word.Len() >= 3; } }`
+  - Then creating and passing an instance of this to the function
