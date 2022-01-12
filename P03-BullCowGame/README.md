@@ -83,3 +83,6 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
 - This `FPaths::ProjectContentDir() / TEXT("Files/File.txt")` returns correct path to the file (Editor/Build)
   - To make the folder available in Build for IO operations, it needs to be added to _Project Settings > Packaging > Additional Non-Asset Directories to Package_
 - `#pragma once` in header files means this header can't be included multiple times by accident
+- This means passing parameter values by reference: `void ProcessGuess(const FString& Word)`
+  - It's better because without it you're creating a copy of passed value, requiring more memory
+  - Use `const` here, otherwise you can accidentally change passed value outside the method
