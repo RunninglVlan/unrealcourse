@@ -18,6 +18,7 @@ private:
     FString HiddenWord;
     int32 Lives;
     bool bGameOver;
+    TArray<FString> LoadWords() const;
     void NewWord();
     bool Validate(const FString& Guess) const;
     static bool IsIsogram(const FString& Word, TCHAR* RepeatedLetter = nullptr);

@@ -3,16 +3,23 @@
 void UBullCowCartridge::BeginPlay()
 {
     Super::BeginPlay();
-    const FString WordListPath = FPaths::ProjectContentDir() / TEXT("Words/Words.txt");
+    Words = LoadWords();
+    PrintLine(TEXT("Welcome to Bulls & Cows!"));
+    NewWord();
+    PrintLine(TEXT("Input your word and press Enter..."));
+}
+
+TArray<FString> UBullCowCartridge::LoadWords() const
+{
+    const FString WordListPath = FPaths::ProjectContentDir() / TEXT("Words.txt");
+    TArray<FString> Words;
     FFileHelper::LoadFileToStringArray(Words, *WordListPath);
-    Words = Words.FilterByPredicate([](const FString& Word)
+    TArray<FString> ValidWords = Words.FilterByPredicate([](const FString& Word)
     {
         const int32 Length = Word.Len();
         return Length >= 3 && Length <= 8 && IsIsogram(Word);
     });
-    PrintLine(TEXT("Welcome to Bulls & Cows!"));
-    NewWord();
-    PrintLine(TEXT("Input your word and press Enter..."));
+    return ValidWords;
 }
 
 void UBullCowCartridge::NewWord()
