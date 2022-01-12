@@ -35,8 +35,9 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
 - Blueprint Classes are extendable, and can even extend C++ classes
 - Scene Components are in the root of Actors and give them location, rotation and scale
 - Naming Conventions:
-  - Classes that inherit from AActor are prefixed by A
-  - Classes that inherit from UObject are prefixed by U
+  - Classes that inherit from `AActor` are prefixed by A
+  - Classes that inherit from `UObject` are prefixed by U
+  - If it's a `struct`, it needs to be prefixed with F
 - Some Unreal classes:
   - `FString/FText` <- `String`
   - `TArray` <- `List`
@@ -90,3 +91,4 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
   - A lambda is actually just syntactic sugar for creating a class with a compiler generated name with the () operator overloaded
   - `class CompilerGeneratedName { public: bool operator()(const FString& Word) const { return Word.Len() >= 3; } }`
   - Then creating and passing an instance of this to the function
+- Structs: `FBullsCowsCount Count = { 1, 2 }` <- `var count = new BullsCowsCount { Bulls = 1, Cows = 2 }`

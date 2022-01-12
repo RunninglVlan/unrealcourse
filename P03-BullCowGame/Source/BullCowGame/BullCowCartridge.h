@@ -4,6 +4,12 @@
 #include "Console/Cartridge.h"
 #include "BullCowCartridge.generated.h"
 
+struct FBullsCowsCount
+{
+    int32 Bulls = 0;
+    int32 Cows = 0;
+};
+
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 {
@@ -23,6 +29,6 @@ private:
     bool Validate(const FString& Guess) const;
     static bool IsIsogram(const FString& Word, TCHAR* RepeatedLetter = nullptr);
     void ProcessGuess(const FString& Word);
-    void CountBullsAndCows(const FString& Word, int32& Bulls, int32& Cows) const;
+    FBullsCowsCount CountBullsAndCows(const FString& Word) const;
     void AskForANewWord();
 };

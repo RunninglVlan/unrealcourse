@@ -93,9 +93,8 @@ void UBullCowCartridge::ProcessGuess(const FString& Word)
     PrintLine(TEXT("Unfortunately you're wrong"));
     if (--Lives > 0)
     {
-        int32 Bulls, Cows;
-        CountBullsAndCows(Word, Bulls, Cows);
-        PrintLine(TEXT("Your guess has %d Bulls and %d Cows"), Bulls, Cows);
+        const FBullsCowsCount Count = CountBullsAndCows(Word);
+        PrintLine(TEXT("Your guess has %d Bulls and %d Cows"), Count.Bulls, Count.Cows);
         PrintLine(TEXT("You got %d more lives. Try again."), Lives);
     }
     else
@@ -107,22 +106,23 @@ void UBullCowCartridge::ProcessGuess(const FString& Word)
     }
 }
 
-void UBullCowCartridge::CountBullsAndCows(const FString& Word, int32& Bulls, int32& Cows) const
+FBullsCowsCount UBullCowCartridge::CountBullsAndCows(const FString& Word) const
 {
-    Bulls = 0, Cows = 0;
+    FBullsCowsCount Count;
     for (int32 Index = 0; Index < Word.Len(); Index++)
     {
         const TCHAR Letter = Word[Index];
         if (Letter == HiddenWord[Index])
         {
-            Bulls++;
+            Count.Bulls++;
             continue;
         }
         if (HiddenWord.GetCharArray().Contains(Letter))
         {
-            Cows++;
+            Count.Cows++;
         }
     }
+    return Count;
 }
 
 void UBullCowCartridge::AskForANewWord()
