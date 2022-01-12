@@ -66,10 +66,10 @@ Bulls & Cows, 61 Lectures: [30](https://www.udemy.com/course/unrealcourse/learn/
   - `MyActor->SetLifeSpan(1)` <- `Destroy(MyGameObject, 1)`
 - In Unreal primary unit is centimeter compared to Unity meter
 - Unreal doesn't use Exception handling, you use `check()` to trigger critical assertion error or `ensure()` to report error but not halt the program
-- `TEXT()` macro needs to be used when using string literals, without it limited ANSI encoding will be used. Using the macro is also more efficient
-- String formatting:
-  - `FString::Printf(TEXT("Oh Hi %d"), TEXT("Mark"))` <- `$"Oh Hi {"Mark"}""`
-- FString length: `TEXT("Hello").Len()`
+- String related:
+  - `TEXT()` macro needs to be used when using string literals, without it limited ANSI encoding will be used. Using the macro is also more efficient
+  - Formatting: `FString::Printf(TEXT("Oh Hi %d"), TEXT("Mark"))` <- `$"Oh Hi {"Mark"}""`
+  - Length: `TEXT("Hello").Len()`
 - private methods should be included in header files too
 - bool fields need to start with b: `bool bGameOver`
 - `const` member functions are similar to `static` functions
