@@ -4,3 +4,5 @@ Building Escape, 52 Lectures: [86](https://www.udemy.com/course/unrealcourse/lea
 
 ## What's new
 - Use _Class Viewer_ to see all the classes and their inheritance chain
+- When deleting your Custom Class, make sure that no object in the map has it on it
+  - Remove CPP/H in Rider, then restart UE
