@@ -10,7 +10,8 @@ void UWorldPosition::BeginPlay()
 	Super::BeginPlay();
 
 	const FString Name = GetOwner()->GetName();
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *Name);
+	const FString Position = GetOwner()->GetActorLocation().ToString();
+	UE_LOG(LogTemp, Warning, TEXT("%s is located at (%s)"), *Name, *Position);
 }
 
 void UWorldPosition::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
