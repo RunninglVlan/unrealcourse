@@ -9,9 +9,8 @@ void UWorldPosition::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Error, TEXT("Red"));
-	UE_LOG(LogTemp, Warning, TEXT("Yellow"));
-	UE_LOG(LogTemp, Display, TEXT("Grey"));
+	const FString Name = GetOwner()->GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *Name);
 }
 
 void UWorldPosition::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
