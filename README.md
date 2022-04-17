@@ -10,8 +10,8 @@ For [Unreal Engine C++ Developer course](https://www.udemy.com/course/unrealcour
 </table>
 
 ## Useful resources
-- [Unreal Engine Coding Standard](https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard)
-- [Unreal Online Learning](https://www.unrealengine.com/en-US/onlinelearning-courses)
-- [Getting Started with Unreal](https://docs.unrealengine.com/en-US/GettingStarted)
-- [Unreal Engine 4 For Unity Developers](https://docs.unrealengine.com/en-US/Basics/UnrealEngineForUnityDevs/)
+- [Unreal Engine Coding Standard](https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DevelopmentSetup/CodingStandard/)
+- [Unreal Online Learning](https://dev.epicgames.com/community/learning)
+- [Getting Started with Unreal](https://docs.unrealengine.com/4.27/en-US/Basics/GettingStarted/)
+- [Unreal Engine 4 For Unity Developers](https://docs.unrealengine.com/4.27/en-US/Basics/UnrealEngineForUnityDevs/)
 - [Textures](https://www.textures.com/)
