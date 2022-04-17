@@ -1,11 +1,11 @@
 # unrealcourse
 For [Unreal Engine C++ Developer course](https://www.udemy.com/course/unrealcourse/)
 
-## Run in Repl.it
+## Projects
 <table>
   <tr>
-    <td><a href="https://repl.it/@RunninglVlan/TripleX"><img src="/P02-TripleX/thumbnail.png" /></a><br>2. Triple X</td>
-    <td><a href="/P03-BullCowGame/Source/BullCowGame/BullCowCartridge.cpp"><img src="/P03-BullCowGame/thumbnail.png" /></a><br>3. Bulls & Cows</td>
+    <td><a href="https://repl.it/@RunninglVlan/TripleX"><img src="/P02-TripleX/thumbnail.png" /></a><br>2. Triple X (Run in Repl.it)</td>
+    <td><a href="/P03-BullCowGame/Source/BullCowGame/BullCowCartridge.cpp"><img src="/P03-BullCowGame/thumbnail.png" /></a><br>3. Bulls & Cows (BullCowCartridge.cpp)</td>
   </tr>
 </table>
 
