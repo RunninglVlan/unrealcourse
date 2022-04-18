@@ -20,5 +20,6 @@ public:
 	                           FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	void Open() const;
+	float TargetYaw;
+	void Open(FRotator Rotation, const float Openness) const;
 };
