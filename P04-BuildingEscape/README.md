@@ -29,3 +29,5 @@ Building Escape, 52 Lectures: [86](https://www.udemy.com/course/unrealcourse/lea
   - Renaming asset creates a [redirector](https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/Redirectors/) with the old name (for other assets that still reference it).
   - To get rid of these redirectors and update the references - right click on the folder and _Fix Up Redirectors..._
   - Still this breaks Version Control History...
+- To move static meshes in game they need to be [Movable](https://docs.unrealengine.com/5.0/en-US/actor-mobility-in-unreal-engine/)
+- For some reason [transform rotation](https://docs.unrealengine.com/4.27/en-US/API/Runtime/Core/Math/FRotator/) values in Unreal don't have XYZ axes, but Roll/Pitch/Yaw axes. And even `FRotator` ctor has a different order for these axes.
