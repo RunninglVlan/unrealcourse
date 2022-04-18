@@ -23,7 +23,7 @@ Building Escape, 52 Lectures: [86](https://www.udemy.com/course/unrealcourse/lea
   - If you select a material and place a Geometry in the scene, it will have that material
   - BSPs interact with each other, there are 2 types of brushes. _Additive_ is like solid, filled-in space. _Subtractive_ is a hollow, carved-out space. You can place additive hollow box and combine it with subtractive boxes to create doors and windows.
   - _Order_ is important and can be changed (To First, To Last)
-  - BSPs can also be converted to Static Meshes
+  - BSPs can also be converted to Static Meshes (SM can also be created from several currently selected BSPs)
   - BSP can be changed in _Brush Editing_ by selecting and moving its specific faces, edges or vertices
 - Asset refactoring is difficult in Unreal
   - Renaming asset creates a [redirector](https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/Redirectors/) with the old name (for other assets that still reference it).
@@ -33,3 +33,6 @@ Building Escape, 52 Lectures: [86](https://www.udemy.com/course/unrealcourse/lea
 - For some reason [transform rotation](https://docs.unrealengine.com/4.27/en-US/API/Runtime/Core/Math/FRotator/) values in Unreal don't have XYZ axes, but Roll/Pitch/Yaw axes. And even `FRotator` ctor has a different order for these axes.
 - [Material Instances](https://docs.unrealengine.com/4.27/en-US/RenderingAndGraphics/Materials/MaterialInstances/) can be used to have different UV scaling for different surfaces
   - Expose parameters in Material, change them in Instances
+- Collision can be [Simple or Complex](https://docs.unrealengine.com/4.27/en-US/InteractiveExperiences/Physics/SimpleVsComplex/)
+  - Simple uses primitives like cube, sphere. Complex - trimesh of a given object, so it is expensive.
+- Press _Alt_ on a selected object, then move it and it will become a duplicate
