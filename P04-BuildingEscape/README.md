@@ -31,3 +31,5 @@ Building Escape, 52 Lectures: [86](https://www.udemy.com/course/unrealcourse/lea
   - Still this breaks Version Control History...
 - To move static meshes in game they need to be [Movable](https://docs.unrealengine.com/5.0/en-US/actor-mobility-in-unreal-engine/)
 - For some reason [transform rotation](https://docs.unrealengine.com/4.27/en-US/API/Runtime/Core/Math/FRotator/) values in Unreal don't have XYZ axes, but Roll/Pitch/Yaw axes. And even `FRotator` ctor has a different order for these axes.
+- [Material Instances](https://docs.unrealengine.com/4.27/en-US/RenderingAndGraphics/Materials/MaterialInstances/) can be used to have different UV scaling for different surfaces
+  - Expose parameters in Material, change them in Instances
