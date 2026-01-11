@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <ctime>
-#include "fmt/format.h"
+// #include "fmt/format.h"
 
 void Init()
 {
@@ -27,8 +27,10 @@ bool PlayLevel(int Difficulty)
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
     std::cout << "+ There are 3 numbers in the code" << std::endl;
-    std::cout << fmt::format("+ The numbers add-up to: {}", CodeSum) << std::endl;
-    std::cout << fmt::format("+ The numbers multiply to give: {}", CodeProduct) << std::endl;
+//    std::cout << fmt::format("+ The numbers add-up to: {}", CodeSum) << std::endl;
+    std::cout << "+ The numbers add-up to: " << CodeSum << std::endl;
+//    std::cout << fmt::format("+ The numbers multiply to give: {}", CodeProduct) << std::endl;
+    std::cout << "+ The numbers multiply to give: " << CodeProduct << std::endl;
 
     int GuessA, GuessB, GuessC;
     std::cout << "Your guess: ";
@@ -54,7 +56,8 @@ int main()
     while (LevelDifficulty <= MaxDifficulty)
     {
         const auto bCompleted = PlayLevel(LevelDifficulty);
-        std::cout << fmt::format("You guessed {}", bCompleted ? "right" : "wrong") << std::endl;
+//        std::cout << fmt::format("You guessed {}", bCompleted ? "right" : "wrong") << std::endl;
+        std::cout << "You guessed " << bCompleted ? "right" : "wrong" << std::endl;
         if (bCompleted)
         {
             LevelDifficulty++;
@@ -63,7 +66,8 @@ int main()
                 std::cout << std::endl
                           << "*** Great, but the door doesn't open yet,             ***" << std::endl;
                 std::cout << "*** instead you're asked to enter a new code          ***" << std::endl;
-                std::cout << fmt::format("*** It says on the display that you're on level {} now ***", LevelDifficulty) << std::endl;
+//                std::cout << fmt::format("*** It says on the display that you're on level {} now ***", LevelDifficulty) << std::endl;
+                std::cout << "*** It says on the display that you're on level " << LevelDifficulty << " now ***" << std::endl;
             }
         }
         else
