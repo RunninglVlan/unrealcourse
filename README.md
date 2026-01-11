@@ -4,7 +4,7 @@ For [Unreal Engine C++ Developer course](https://www.udemy.com/course/unrealcour
 ## Projects
 <table>
   <tr>
-    <td><a href="https://repl.it/@RunninglVlan/TripleX"><img src="/P02-TripleX/thumbnail.png" /></a><br>2. Triple X (Run in Repl.it)</td>
+    <td><a href="https://www.onlineide.pro/playground/share/92c03042-7c5f-4096-8a5d-41e0cd020a7e"><img src="/P02-TripleX/thumbnail.png" /></a><br>2. Triple X (Run in Online IDE Pro)</td>
     <td><a href="/P03-BullCowGame/Source/BullCowGame/BullCowCartridge.cpp"><img src="/P03-BullCowGame/thumbnail.png" /></a><br>3. Bulls & Cows (BullCowCartridge.cpp)</td>
   </tr>
 </table>
