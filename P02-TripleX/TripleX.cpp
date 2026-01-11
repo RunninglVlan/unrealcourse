@@ -57,7 +57,7 @@ int main()
     {
         const auto bCompleted = PlayLevel(LevelDifficulty);
 //        std::cout << fmt::format("You guessed {}", bCompleted ? "right" : "wrong") << std::endl;
-        std::cout << "You guessed " << bCompleted ? "right" : "wrong" << std::endl;
+        std::cout << "You guessed " << (bCompleted ? "right" : "wrong") << std::endl;
         if (bCompleted)
         {
             LevelDifficulty++;
